@@ -1,5 +1,10 @@
 # Tugas 1
-## Ega Prabu Pamungkas - 05111940000014
+## Identitas
+
+Nama: Ega Prabu Pamungkas
+NRP: 05111940000014
+
+## Benda
 
 Nama Benda: Kotak Kacamata
 
@@ -15,8 +20,8 @@ Tampak Kiri:
 Tampak Belakang:
 ![tampak-belakang](https://github.com/cg2021a/tugas-1-feratyusa/blob/main/gambar/tampak-belakang.jpeg)
 
-Hasil
+## Hasil
 
-Gambar yang dibuat adalah tampak depan dan tampak belakang dimana tampak depan terlihat bergerak atas dan bawah dengan kecepata 0.014 di sebelah kanan dan tampak belakang terlihat di sebelah kiri. Hasil yang dibuat berdasarkan gambar yang telah diambil dan disederhakan.
+Gambar yang dibuat adalah tampak depan dan tampak belakang. Tampak depan terlihat di sebelah kanan dimana akan bergerak atas dan bawah dengan kecepatan `0.0014` dan tampak belakang terlihat di sebelah kiri. Hasil yang dibuat berdasarkan gambar yang telah diambil dan disederhakan.
 
 ![hasil](/gambar/hasil.jpeg)
