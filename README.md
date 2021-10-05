@@ -14,3 +14,9 @@ Tampak Kiri:
 
 Tampak Belakang:
 ![tampak-belakang](https://github.com/cg2021a/tugas-1-feratyusa/blob/main/gambar/tampak-belakang.jpeg)
+
+Hasil
+
+Gambar yang dibuat adalah tampak depan dan tampak belakang dimana tampak depan terlihat bergerak atas dan bawah dengan kecepata 0.014 di sebelah kanan dan tampak belakang terlihat di sebelah kiri. Hasil yang dibuat berdasarkan gambar yang telah diambil dan disederhakan.
+
+![hasil](/gambar/hasil.jpeg)
