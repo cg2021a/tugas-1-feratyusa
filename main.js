@@ -93,7 +93,7 @@ function main(){
 
     const vertices = [
         /**
-         *  Right Object 96 Vertices ================================================
+         *  Right Object 96 Points ================================================
          * */
         // 1. Top Shape
         ...right_things.top_a, ...right_things.color_black_light, // Top Side: 6
@@ -218,7 +218,7 @@ function main(){
         ...right_things.al_b, ...right_things.color_black,
 
         /**
-         *  Left Object 96 Vertices ================================================
+         *  Left Object 96 Points ================================================
          * */
 
         // 1. Top Shape
@@ -353,10 +353,9 @@ function main(){
         attribute vec2 aPosition;
         attribute vec3 aColor;
         varying vec3 vColor;
-        uniform vec2 uChange;
         void main() {
             gl_PointSize = 10.0;
-            gl_Position = vec4(aPosition, 1.0, 1.0);
+            gl_Position = vec4(aPosition.x, aPosition.y, 1.0, 1.0);
             vColor = aColor;
         }
     `;
@@ -416,32 +415,39 @@ function main(){
     );
     gl.enableVertexAttribArray(aColor);
 
-    gl.clearColor(0.9, 0.9, 0.9, 0.0);
-    gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.drawArrays(gl.TRIANGLES, 0, vertices.length/5);
+    var freeze = false;
+    // Apply some interaction using mouse
+    function onMouseClick(event) {
+        freeze = !freeze;
+    }
+    document.addEventListener("click", onMouseClick, false);
 
-    // var freeze = false;
-    // // Apply some interaction using mouse
-    // function onMouseClick(event) {
-    //     freeze = !freeze;
-    // }
-    // document.addEventListener("click", onMouseClick, false);
-
-    // var speed = [3/600, 1/600];
-    // // Create a uniform to animate the vertices
+    // Speed much wow
+    var speed = 0.0014;
+    var change = 0;
     // var uChange = gl.getUniformLocation(shaderProgram, "uChange");
-    // var change = [0, 0];
 
-    // function render() {
-    //     if (!freeze) {
-    //         change[0] = change[0] + speed[0];
-    //         change[1] = change[1] + speed[1];
-    //         gl.uniform2fv(uChange, change);
-    //         gl.clearColor(0.1, 0.1, 0.1, 1.0);
-    //         gl.clear(gl.COLOR_BUFFER_BIT);
-    //         gl.drawArrays(gl.TRIANGLES, 0, 36);
-    //     }
-    //     requestAnimationFrame(render);
-    // }
-    // requestAnimationFrame(render);
+    function render() {
+        if (!freeze) {
+
+            // Right object top vertices is on vertices[6] and bottom vertices is on vertices[476]
+            if(vertices[6] > 1.0 || vertices[476] < -1.0){
+                speed *= -1;
+            }
+            for(let i=1; i < 480; i += 5){
+                vertices[i] = vertices[i] + speed;
+            }
+
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+
+            change += speed;
+
+            gl.clearColor(0.9, 0.9, 0.9, 0.0);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+            gl.drawArrays(gl.TRIANGLES, 0, vertices.length/5);
+        }
+        requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
 }
