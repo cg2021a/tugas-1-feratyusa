@@ -9,7 +9,9 @@ function main(){
      */
     const gl = canvas.getContext('webgl');
     
-    // Right Side
+    /**
+     * Right Object
+     */
     const right_things = {
         // Color
         color_black: [0.0, 0.0, 0.0],
@@ -48,8 +50,51 @@ function main(){
         ins_d: [0.83, -0.1],
     };
 
+    /**
+     * Left Object
+     */
+    const left_things = {
+        // Color
+        color_black: [0.0, 0.0, 0.0],
+        color_black_light: [0.5, 0.5, 0.5],
+        color_inside: [0.79, 0.95, 0.36],
+        // Top Point
+        top_a: [-0.1, 0.32],
+        top_b: [-0.15, 0.35],
+        top_c: [-0.8, 0.35],
+        top_d: [-0.85, 0.32],
+        top_e: [-0.85, 0.05],
+        top_f: [-0.8, 0.02],
+        top_g: [-0.15, 0.02],
+        top_h: [-0.1, 0.05],
+        // Center Point
+        center_a: [-0.3, 0.01],
+        center_b: [-0.3, -0.01],
+        center_c: [-0.65, -0.01],
+        center_d: [-0.65, 0.01],
+        // Bottom Point
+        bot_a: [-0.07, -0.32],
+        bot_b: [-0.12, -0.35],
+        bot_c: [-0.83, -0.35],
+        bot_d: [-0.88, -0.32],
+        bot_e: [-0.85, -0.05],
+        bot_f: [-0.8, -0.02],
+        bot_g: [-0.15, -0.02],
+        bot_h: [-0.1, -0.05],
+        // Alas Point
+        al_a:[-0.13, -0.4],
+        al_b: [-0.8, -0.4],
+        // Inside
+        ins_a: [-0.12, 0.1],
+        ins_b: [-0.12, 0.30],
+        ins_c: [-0.83, 0.30],
+        ins_d: [-0.83, 0.1],
+    }
+
     const vertices = [
-        // Right Things
+        /**
+         *  Right Object 96 Vertices ================================================
+         * */
         // 1. Top Shape
         ...right_things.top_a, ...right_things.color_black_light, // Top Side: 6
         ...right_things.top_b, ...right_things.color_black_light,
@@ -171,6 +216,132 @@ function main(){
         ...right_things.bot_b, ...right_things.color_black,
         ...right_things.bot_c, ...right_things.color_black,
         ...right_things.al_b, ...right_things.color_black,
+
+        /**
+         *  Left Object 96 Vertices ================================================
+         * */
+
+        // 1. Top Shape
+        ...left_things.top_a, ...left_things.color_black_light, // Top Side: 6
+        ...left_things.top_b, ...left_things.color_black_light,
+        ...left_things.top_c, ...left_things.color_black_light,
+        ...left_things.top_a, ...left_things.color_black_light, 
+        ...left_things.top_d, ...left_things.color_black_light,
+        ...left_things.top_c, ...left_things.color_black_light,
+
+        ...left_things.top_c, ...left_things.color_black_light, // Right Side: 6
+        ...left_things.top_d, ...left_things.color_black_light,
+        ...left_things.top_e, ...left_things.color_black_light,
+        ...left_things.top_c, ...left_things.color_black_light,
+        ...left_things.top_f, ...left_things.color_black_light,
+        ...left_things.top_e, ...left_things.color_black_light,
+
+        ...left_things.top_e, ...left_things.color_black_light, // Bottom Side: 6
+        ...left_things.top_f, ...left_things.color_black_light,
+        ...left_things.top_g, ...left_things.color_black_light,
+        ...left_things.top_e, ...left_things.color_black_light,
+        ...left_things.top_h, ...left_things.color_black_light,
+        ...left_things.top_g, ...left_things.color_black_light,
+
+        ...left_things.top_g, ...left_things.color_black_light, // Left Side: 6
+        ...left_things.top_h, ...left_things.color_black_light,
+        ...left_things.top_a, ...left_things.color_black_light,
+        ...left_things.top_g, ...left_things.color_black_light,
+        ...left_things.top_b, ...left_things.color_black_light,
+        ...left_things.top_a, ...left_things.color_black_light,
+
+        ...left_things.top_a, ...left_things.color_black_light, // Center Part: 6
+        ...left_things.top_d, ...left_things.color_black_light,
+        ...left_things.top_e, ...left_things.color_black_light,
+        ...left_things.top_a, ...left_things.color_black_light,
+        ...left_things.top_e, ...left_things.color_black_light,
+        ...left_things.top_h, ...left_things.color_black_light,
+
+        // 2. Center Shape
+        ...left_things.top_g, ...left_things.color_black_light,
+        ...left_things.center_a, ...left_things.color_black_light,
+        ...left_things.center_d, ...left_things.color_black_light,
+
+        ...left_things.top_g, ...left_things.color_black_light,
+        ...left_things.top_f, ...left_things.color_black_light,
+        ...left_things.center_d, ...left_things.color_black_light,
+
+        ...left_things.center_a, ...left_things.color_black,
+        ...left_things.center_b, ...left_things.color_black,
+        ...left_things.center_c, ...left_things.color_black,
+
+        ...left_things.center_a, ...left_things.color_black,
+        ...left_things.center_d, ...left_things.color_black,
+        ...left_things.center_c, ...left_things.color_black,
+
+        ...left_things.bot_g, ...left_things.color_black_light,
+        ...left_things.center_b, ...left_things.color_black_light,
+        ...left_things.center_c, ...left_things.color_black_light,
+
+        ...left_things.bot_g, ...left_things.color_black_light,
+        ...left_things.bot_f, ...left_things.color_black_light,
+        ...left_things.center_c, ...left_things.color_black_light,
+
+        // 3. Bottom Shape
+        ...left_things.bot_a, ...left_things.color_black_light, // bot Side: 6
+        ...left_things.bot_b, ...left_things.color_black_light,
+        ...left_things.bot_c, ...left_things.color_black_light,
+        ...left_things.bot_a, ...left_things.color_black_light, 
+        ...left_things.bot_d, ...left_things.color_black_light,
+        ...left_things.bot_c, ...left_things.color_black_light,
+
+        ...left_things.bot_c, ...left_things.color_black_light, // Right Side: 6
+        ...left_things.bot_d, ...left_things.color_black_light,
+        ...left_things.bot_e, ...left_things.color_black_light,
+        ...left_things.bot_c, ...left_things.color_black_light,
+        ...left_things.bot_f, ...left_things.color_black_light,
+        ...left_things.bot_e, ...left_things.color_black_light,
+
+        ...left_things.bot_e, ...left_things.color_black_light, // Bottom Side: 6
+        ...left_things.bot_f, ...left_things.color_black_light,
+        ...left_things.bot_g, ...left_things.color_black_light,
+        ...left_things.bot_e, ...left_things.color_black_light,
+        ...left_things.bot_h, ...left_things.color_black_light,
+        ...left_things.bot_g, ...left_things.color_black_light,
+
+        ...left_things.bot_g, ...left_things.color_black_light, // Left Side: 6
+        ...left_things.bot_h, ...left_things.color_black_light,
+        ...left_things.bot_a, ...left_things.color_black_light,
+        ...left_things.bot_g, ...left_things.color_black_light,
+        ...left_things.bot_b, ...left_things.color_black_light,
+        ...left_things.bot_a, ...left_things.color_black_light,
+
+        ...left_things.bot_a, ...left_things.color_black_light, // Center Part: 6
+        ...left_things.bot_d, ...left_things.color_black_light,
+        ...left_things.bot_e, ...left_things.color_black_light,
+        ...left_things.bot_a, ...left_things.color_black_light,
+        ...left_things.bot_h, ...left_things.color_black_light,
+        ...left_things.bot_e, ...left_things.color_black_light,
+
+        // 4. Inside
+        ...left_things.ins_a, ...left_things.color_inside,
+        ...left_things.ins_b, ...left_things.color_inside,
+        ...left_things.ins_c, ...left_things.color_inside,
+        ...left_things.ins_a, ...left_things.color_inside,
+        ...left_things.ins_d, ...left_things.color_inside,
+        ...left_things.ins_c, ...left_things.color_inside,
+
+        // 5. Alas
+        ...left_things.bot_b, ...left_things.color_black,
+        ...left_things.al_a, ...left_things.color_black,
+        ...left_things.bot_a, ...left_things.color_black,
+        
+        ...left_things.bot_c, ...left_things.color_black,
+        ...left_things.al_b, ...left_things.color_black,
+        ...left_things.bot_d, ...left_things.color_black,
+
+        ...left_things.bot_b, ...left_things.color_black,
+        ...left_things.al_a, ...left_things.color_black,
+        ...left_things.al_b, ...left_things.color_black,
+
+        ...left_things.bot_b, ...left_things.color_black,
+        ...left_things.bot_c, ...left_things.color_black,
+        ...left_things.al_b, ...left_things.color_black,
     ];
 
     // Create a linked-list for storing the vertices data
@@ -247,7 +418,7 @@ function main(){
 
     gl.clearColor(0.9, 0.9, 0.9, 0.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.drawArrays(gl.TRIANGLES, 0, 96);
+    gl.drawArrays(gl.TRIANGLES, 0, vertices.length/5);
 
     // var freeze = false;
     // // Apply some interaction using mouse
