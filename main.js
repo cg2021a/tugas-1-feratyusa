@@ -93,7 +93,7 @@ function main(){
 
     const vertices = [
         /**
-         *  Right Object 96 Points ================================================
+         *  Right Object 72 Points ================================================
          * */
         // 1. Top Shape
         ...right_things.top_a, ...right_things.color_black_light, // Top Side: 6
@@ -103,26 +103,12 @@ function main(){
         ...right_things.top_d, ...right_things.color_black_light,
         ...right_things.top_c, ...right_things.color_black_light,
 
-        ...right_things.top_c, ...right_things.color_black_light, // Right Side: 6
-        ...right_things.top_d, ...right_things.color_black_light,
-        ...right_things.top_e, ...right_things.color_black_light,
-        ...right_things.top_c, ...right_things.color_black_light,
-        ...right_things.top_f, ...right_things.color_black_light,
-        ...right_things.top_e, ...right_things.color_black_light,
-
         ...right_things.top_e, ...right_things.color_black_light, // Bottom Side: 6
         ...right_things.top_f, ...right_things.color_black_light,
         ...right_things.top_g, ...right_things.color_black_light,
         ...right_things.top_e, ...right_things.color_black_light,
         ...right_things.top_h, ...right_things.color_black_light,
         ...right_things.top_g, ...right_things.color_black_light,
-
-        ...right_things.top_g, ...right_things.color_black_light, // Left Side: 6
-        ...right_things.top_h, ...right_things.color_black_light,
-        ...right_things.top_a, ...right_things.color_black_light,
-        ...right_things.top_g, ...right_things.color_black_light,
-        ...right_things.top_b, ...right_things.color_black_light,
-        ...right_things.top_a, ...right_things.color_black_light,
 
         ...right_things.top_a, ...right_things.color_black_light, // Center Part: 6
         ...right_things.top_d, ...right_things.color_black_light,
@@ -164,26 +150,12 @@ function main(){
         ...right_things.bot_d, ...right_things.color_black_light,
         ...right_things.bot_c, ...right_things.color_black_light,
 
-        ...right_things.bot_c, ...right_things.color_black_light, // Right Side: 6
-        ...right_things.bot_d, ...right_things.color_black_light,
-        ...right_things.bot_e, ...right_things.color_black_light,
-        ...right_things.bot_c, ...right_things.color_black_light,
-        ...right_things.bot_f, ...right_things.color_black_light,
-        ...right_things.bot_e, ...right_things.color_black_light,
-
         ...right_things.bot_e, ...right_things.color_black_light, // Bottom Side: 6
         ...right_things.bot_f, ...right_things.color_black_light,
         ...right_things.bot_g, ...right_things.color_black_light,
         ...right_things.bot_e, ...right_things.color_black_light,
         ...right_things.bot_h, ...right_things.color_black_light,
         ...right_things.bot_g, ...right_things.color_black_light,
-
-        ...right_things.bot_g, ...right_things.color_black_light, // Left Side: 6
-        ...right_things.bot_h, ...right_things.color_black_light,
-        ...right_things.bot_a, ...right_things.color_black_light,
-        ...right_things.bot_g, ...right_things.color_black_light,
-        ...right_things.bot_b, ...right_things.color_black_light,
-        ...right_things.bot_a, ...right_things.color_black_light,
 
         ...right_things.bot_a, ...right_things.color_black_light, // Center Part: 6
         ...right_things.bot_d, ...right_things.color_black_light,
@@ -218,7 +190,7 @@ function main(){
         ...right_things.al_b, ...right_things.color_black,
 
         /**
-         *  Left Object 96 Points ================================================
+         *  Left Object 72 Points ================================================
          * */
 
         // 1. Top Shape
@@ -290,26 +262,12 @@ function main(){
         ...left_things.bot_d, ...left_things.color_black_light,
         ...left_things.bot_c, ...left_things.color_black_light,
 
-        ...left_things.bot_c, ...left_things.color_black_light, // Right Side: 6
-        ...left_things.bot_d, ...left_things.color_black_light,
-        ...left_things.bot_e, ...left_things.color_black_light,
-        ...left_things.bot_c, ...left_things.color_black_light,
-        ...left_things.bot_f, ...left_things.color_black_light,
-        ...left_things.bot_e, ...left_things.color_black_light,
-
         ...left_things.bot_e, ...left_things.color_black_light, // Bottom Side: 6
         ...left_things.bot_f, ...left_things.color_black_light,
         ...left_things.bot_g, ...left_things.color_black_light,
         ...left_things.bot_e, ...left_things.color_black_light,
         ...left_things.bot_h, ...left_things.color_black_light,
         ...left_things.bot_g, ...left_things.color_black_light,
-
-        ...left_things.bot_g, ...left_things.color_black_light, // Left Side: 6
-        ...left_things.bot_h, ...left_things.color_black_light,
-        ...left_things.bot_a, ...left_things.color_black_light,
-        ...left_things.bot_g, ...left_things.color_black_light,
-        ...left_things.bot_b, ...left_things.color_black_light,
-        ...left_things.bot_a, ...left_things.color_black_light,
 
         ...left_things.bot_a, ...left_things.color_black_light, // Center Part: 6
         ...left_things.bot_d, ...left_things.color_black_light,
@@ -431,10 +389,10 @@ function main(){
         if (!freeze) {
 
             // Right object top vertices is on vertices[6] and bottom vertices is on vertices[476]
-            if(vertices[6] > 1.0 || vertices[476] < -1.0){
+            if(vertices[6] > 1.0 || vertices[356] < -1.0){
                 speed *= -1;
             }
-            for(let i=1; i < 480; i += 5){
+            for(let i=1; i < 360; i += 5){
                 vertices[i] = vertices[i] + speed;
             }
 
@@ -446,6 +404,7 @@ function main(){
             gl.clearColor(0.9, 0.9, 0.9, 0.0);
             gl.clear(gl.COLOR_BUFFER_BIT);
             gl.drawArrays(gl.TRIANGLES, 0, vertices.length/5);
+            console.log(vertices.length/5);
         }
         requestAnimationFrame(render);
     }
