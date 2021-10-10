@@ -26,12 +26,12 @@ Gambar yang dibuat adalah tampak depan dan tampak belakang. Tampak depan terliha
 
 ![hasil](/gambar/hasil.jpeg)
 
-# Menggambar Three JS
+# Tugas Menggambar Three JS
 
 Detail setiap percobaan THREE JS
 
-1. Cylinder - LambertMaterial - AmbientLight
-2. Cone - PhongMaterial - PointLight
-3. Dodecahedron - MeshToonMaterial - DirectionalLight
-4. Octahedron - MeshNormalMaterial
-5. Torus - MeshPhongMaterial - SpotLights
+1. Cylinder - LambertMaterial - AmbientLight `1.html`
+2. Cone - PhongMaterial - PointLight `2.html`
+3. Dodecahedron - MeshToonMaterial - DirectionalLight `3.html`
+4. Octahedron - MeshNormalMaterial `4.html`
+5. Torus - MeshPhongMaterial - SpotLights `5.html`
