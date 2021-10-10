@@ -29,7 +29,7 @@ Gambar yang dibuat adalah tampak depan dan tampak belakang. Tampak depan terliha
 # Menggambar Three JS
 
 1. Cylinder - LambertMaterial - AmbientLight
-2. Cone - PhongMaterial - HemisphereLight
+2. Cone - PhongMaterial - PointLight
 3. Dodecahedron - MeshToonMaterial - DirectionalLight
-4. Octahedron - MeshNormalMaterial - PointLIght
+4. Octahedron - MeshNormalMaterial
 5. Text - MeshBasicMaterial - SpotLights
