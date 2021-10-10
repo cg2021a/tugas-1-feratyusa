@@ -15,7 +15,7 @@
 
     let cone;
     let createObject = function() {
-        let geometry = new THREE.ConeGeometry(0.75, 1, 10);
+        let geometry = new THREE.CircleGeometry(1, 20, Math.PI * 0.25, Math.PI * 1.5);
         let material = new THREE.MeshPhongMaterial({
                 emissive: 0xff0000, // red
                 reflectivity: 0.5,
