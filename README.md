@@ -28,8 +28,8 @@ Gambar yang dibuat adalah tampak depan dan tampak belakang. Tampak depan terliha
 
 # Menggambar Three JS
 
-1. Cylinder - LambertMaterial - AmbientLight - PerspectiveCamera
-2. Cone - PhongMaterial - HemisphereLight - OrtographicCamera
-3. Circle - MeshToonMaterial - DirectionalLight - PerspectiveCamera
-4. Octahedron - MeshNormalMaterial - PointLIght - OrtographicCamera
-5. Text - MeshBasicMaterial - SpotLights - PerspectiveCamera
+1. Cylinder - LambertMaterial - AmbientLight
+2. Cone - PhongMaterial - HemisphereLight
+3. Circle - MeshToonMaterial - DirectionalLight
+4. Octahedron - MeshNormalMaterial - PointLIght
+5. Text - MeshBasicMaterial - SpotLights

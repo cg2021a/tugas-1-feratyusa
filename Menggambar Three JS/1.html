@@ -17,8 +17,7 @@
     let createObject = function() {
         let geometry = new THREE.CylinderGeometry(0.5, 0.5, 1, 20);
         let material = new THREE.MeshLambertMaterial({
-                color:  0xffffff,
-                emissive: 0x000ff
+                color:  0x00d81c,
         });
         cylinder = new THREE.Mesh(geometry, material);
         scene.add(cylinder);
@@ -39,9 +38,9 @@
         createObject();
 
         // 4. Set Lighting
-        let color = 0xFFFFFF;
-        let intensity = 0.25;
-        let light = new THREE.AmbientLight(color, intensity);
+        const color = 0xffffff;
+        const intensity =  1;
+        const light = new THREE.AmbientLight(color, intensity);
         scene.add(light);
             
          // 5. create the renderer     
