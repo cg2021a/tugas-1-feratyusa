@@ -35,3 +35,4 @@ Detail setiap percobaan THREE JS
 3. Dodecahedron - MeshToonMaterial - DirectionalLight `3.html`
 4. Octahedron - MeshNormalMaterial `4.html`
 5. Torus - MeshPhongMaterial - SpotLights `5.html`
+6. Cube - PhongMaterial - HemisphereLight
