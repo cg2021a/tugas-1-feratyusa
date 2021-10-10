@@ -41,7 +41,10 @@
         createObject();
 
         // 4. Set Lighting
-        const light = new THREE.HemisphereLight(0xffffff, '#f63bc9', 0.8);
+        const color = 0xFFFFFF;
+        const intensity = 1;
+        const light = new THREE.PointLight(color, intensity);
+        light.position.set(1,1,0);
         scene.add(light);
                
          // 5. create the renderer     
@@ -52,9 +55,9 @@
 
     // main animation loop - calls 50-60 in a second.
     let mainLoop = function() {
-        cone.rotation.x += 1/6;
-        cone.rotation.y += 1/6;
-        cone.rotation.z += 1/6;
+        cone.rotation.x += 1/60;
+        cone.rotation.y += 1/60;
+        cone.rotation.z += 1/60;
 
         renderer.render(scene, camera);
 
