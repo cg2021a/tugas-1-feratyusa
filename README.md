@@ -30,6 +30,6 @@ Gambar yang dibuat adalah tampak depan dan tampak belakang. Tampak depan terliha
 
 1. Cylinder - LambertMaterial - AmbientLight
 2. Cone - PhongMaterial - HemisphereLight
-3. Circle - MeshToonMaterial - DirectionalLight
+3. Dodecahedron - MeshToonMaterial - DirectionalLight
 4. Octahedron - MeshNormalMaterial - PointLIght
 5. Text - MeshBasicMaterial - SpotLights
