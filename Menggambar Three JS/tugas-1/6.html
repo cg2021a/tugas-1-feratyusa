@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Torus Geometry</title>
-    <script src="js/three.min.js"></script>
+    <title>Cube Geometry</title>
+    <script src="../js/three.min.js"></script>
 </head>
 <body>
     
@@ -13,15 +13,15 @@
 <script>    
     let scene, camera, renderer;
 
-    let torus;
+    let cube;
     let createObject = function() {
-        let geometry = new THREE.TorusGeometry(
-                5, 2, 20, 20);
+        let geometry = new THREE.BoxGeometry(
+                5,5,5);
         let material = new THREE.MeshPhongMaterial({
                 color: 0xff0000, // red
         });
-        torus = new THREE.Mesh(geometry, material);
-        scene.add(torus);
+        cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
     };
     // set up the environment -
     // initiallize scene, camera, objects and renderer
@@ -39,12 +39,11 @@
         createObject();
 
         // 4. Set Lighting
-        const color = 0xFFFFFF;
+        const skyColor = 0xFFFFFF;  // white
+        const groundColor = 0xB97A20;  // brownish orange
         const intensity = 1;
-        const light = new THREE.SpotLight(color, intensity);
-        light.position.set(0,30,0);
+        const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
         scene.add(light);
-        scene.add(light.target);
         
                
          // 5. create the renderer     
@@ -55,9 +54,9 @@
 
     // main animation loop - calls 50-60 in a second.
     let mainLoop = function() {
-        torus.rotation.x += 1/6;
-        torus.rotation.y += 1/6;
-        torus.rotation.z += 1/6;
+        cube.rotation.x += 1/60;
+        cube.rotation.y += 1/60;
+        cube.rotation.z += 1/60;
         renderer.render(scene, camera);
         requestAnimationFrame(mainLoop);
     };

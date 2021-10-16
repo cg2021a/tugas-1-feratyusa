@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Cone Geometry</title>
-    <script src="js/three.min.js"></script>
+    <title>Dodecahedron Geometry</title>
+    <script src="../js/three.min.js"></script>
 </head>
 <body>
     
@@ -13,24 +13,21 @@
 <script>    
     let scene, camera, renderer;
 
-    let cone;
+    let dode;
     let createObject = function() {
-        let geometry = new THREE.ConeGeometry(0.75, 1, 10);
-        let material = new THREE.MeshPhongMaterial({
-                color: 0xff0000, // red
-                reflectivity: 0.5,
-                shininess: 1,
-
+        let geometry = new THREE.DodecahedronGeometry(1);
+        let material = new THREE.MeshToonMaterial({
+                color: 0xff1fc9 // pink
         });
-        cone = new THREE.Mesh(geometry, material);
-        scene.add(cone);
+        dode = new THREE.Mesh(geometry, material);
+        scene.add(dode);
     };
     // set up the environment -
     // initiallize scene, camera, objects and renderer
     let init = function() {
         // 1. create the scene
         scene = new THREE.Scene();
-        scene.background = new THREE.Color('grey');
+        scene.background = new THREE.Color(0xababab);
             
         // 2. create an locate the camera
         camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 
@@ -43,8 +40,8 @@
         // 4. Set Lighting
         const color = 0xFFFFFF;
         const intensity = 1;
-        const light = new THREE.PointLight(color, intensity);
-        light.position.set(1,1,0);
+        const light = new THREE.DirectionalLight(color, intensity);
+        light.position.set(-1, 0, 0) // Shine from the left
         scene.add(light);
                
          // 5. create the renderer     
@@ -55,14 +52,12 @@
 
     // main animation loop - calls 50-60 in a second.
     let mainLoop = function() {
-        cone.rotation.x += 1/60;
-        cone.rotation.y += 1/60;
-        cone.rotation.z += 1/60;
-
+        dode.rotation.x += 1/60;
+        dode.rotation.y += 1/60;
+        dode.rotation.z += 1/60;
         renderer.render(scene, camera);
-
         requestAnimationFrame(mainLoop);
-    };
+        };
     init();
     mainLoop();
 </script>

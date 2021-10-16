@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Cylinder Geometry</title>
-    <script src="js/three.min.js"></script>
+    <title>Octahedron Geometry</title>
+    <script src="../js/three.min.js"></script>
 </head>
 <body>
     
@@ -13,14 +13,12 @@
 <script>    
     let scene, camera, renderer;
 
-    let cylinder;
+    let octa;
     let createObject = function() {
-        let geometry = new THREE.CylinderGeometry(0.5, 0.5, 1, 20);
-        let material = new THREE.MeshLambertMaterial({
-                color:  0x00d81c,
-        });
-        cylinder = new THREE.Mesh(geometry, material);
-        scene.add(cylinder);
+        let geometry = new THREE.OctahedronGeometry(1);
+        let material = new THREE.MeshNormalMaterial();
+        octa = new THREE.Mesh(geometry, material);
+        scene.add(octa);
     };
     // set up the environment -
     // initiallize scene, camera, objects and renderer
@@ -29,7 +27,7 @@
         scene = new THREE.Scene();
         scene.background = new THREE.Color(0xababab);
             
-        // 2. create an locate the camera       
+        // 2. create an locate the camera
         camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 
             1, 1000);
         camera.position.z = 5;
@@ -37,13 +35,7 @@
         // 3. create an locate the object on the scene           
         createObject();
 
-        // 4. Set Lighting
-        const color = 0xffffff;
-        const intensity =  1;
-        const light = new THREE.AmbientLight(color, intensity);
-        scene.add(light);
-            
-         // 5. create the renderer     
+         // 4. create the renderer     
         renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement); 
@@ -51,9 +43,9 @@
 
     // main animation loop - calls 50-60 in a second.
     let mainLoop = function() {
-        cylinder.rotation.x += 1/60;
-        cylinder.rotation.y += 1/60;
-        cylinder.rotation.z += 1/60;
+        octa.rotation.x += 1/60;
+        octa.rotation.y += 1/60;
+        octa.rotation.z += 1/60;
         renderer.render(scene, camera);
         requestAnimationFrame(mainLoop);
         };
