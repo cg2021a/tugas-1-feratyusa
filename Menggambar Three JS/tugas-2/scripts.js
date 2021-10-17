@@ -1,7 +1,8 @@
 // Variables
-// let score = document.getElementById('score');
-// score.innerHTML = 0;
-let score = 0
+let score = 0;
+let scoreDOM = document.getElementById('score');
+scoreDOM.innerHTML = score;
+// let score = 0
 
 let selected0 = {
     color: null,
@@ -13,8 +14,8 @@ let selected1 = {
 };
 const MAX_CUBE = 30;
 const customSizes = {
-    width: window.innerWidth * 0.9,
-    height: window.innerHeight * 0.9
+    width: window.innerWidth,
+    height: window.innerHeight
 };
 
 let total_cube = 0;
@@ -88,8 +89,8 @@ const checkSelected = function(){
 
         total_cube -= 2;
         score++;
-        // score.innerHTML += 1;
-        console.log("Your Score: "+score);
+        scoreDOM.innerHTML = score;
+        // console.log("Your Score: "+score);
     }
     else{
         // Revert the object back to its original color
@@ -130,6 +131,17 @@ let onMouseClick = function(e) {
 const renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true});
 renderer.setSize(customSizes.width, customSizes.height);
 
+function resizeRendererToDisplaySize(renderer) {
+    const canvas = renderer.domElement;
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
+    const needResize = canvas.width !== width || canvas.height !== height;
+    if (needResize) {
+        renderer.setSize(width, height, false);
+    }
+    return needResize;
+}
+
 // Event Listener
 document.addEventListener("click", onMouseClick, false);
 
@@ -148,6 +160,13 @@ spawnPlane();
 
 // MainLoop
 const mainloop = function(){
+
+    if (resizeRendererToDisplaySize(renderer)) {
+        const canvas = renderer.domElement;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+    }
+
     if(total_cube < MAX_CUBE){
         if(spawn_cube == spawn_cd){
             const color = pickColor();
