@@ -1,6 +1,8 @@
 // Variables
-let boxes = [];
-let score = 0;
+// let score = document.getElementById('score');
+// score.innerHTML = 0;
+let score = 0
+
 let selected0 = {
     color: null,
     object: null,
@@ -67,7 +69,6 @@ const spawnCube = function(randColor){
     box.position.x = pickNumber(-20, 20);
     box.position.y = pickNumber(-20, 20);
     box.position.z = pickNumber(-20, 20);
-    // boxes.push(box);
     scene.add(box);
 }
 
@@ -87,7 +88,8 @@ const checkSelected = function(){
 
         total_cube -= 2;
         score++;
-        console.log(score);
+        // score.innerHTML += 1;
+        console.log("Your Score: "+score);
     }
     else{
         // Revert the object back to its original color
@@ -113,13 +115,11 @@ let onMouseClick = function(e) {
             if( selected0.color === null ){
                 selected0.color = obj.object.material.color;
                 selected0.object = obj.object;
-                // obj.object.material.color = new THREE.Color('grey');
-                console.log('select0 '+selected0.color)
             }
             else if( selected1.color === null ){
                 selected1.color = obj.object.material.color;
                 selected1.object = obj.object;
-                console.log('select1 '+selected1.color)
+                
                 checkSelected();
             }
         }
@@ -154,8 +154,7 @@ const mainloop = function(){
             spawnCube(color);
             total_cube++;
             if(spawn_cd > 10)
-                spawn_cd -= 2;
-            console.log(total_cube);
+                spawn_cd -= 5;
             spawn_cube = 0;
         }
         spawn_cube += spawn_rate;
