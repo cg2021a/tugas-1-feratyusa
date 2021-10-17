@@ -1,8 +1,14 @@
 // Variables
 let boxes = [];
 let score = 0;
-let selected0 = null;
-let selected1 = null;
+let selected0 = {
+    color: null,
+    object: null,
+};
+let selected1 = {
+    color: null,
+    object: null,
+};
 const MAX_CUBE = 30;
 const customSizes = {
     width: window.innerWidth * 0.9,
@@ -67,16 +73,17 @@ const spawnCube = function(randColor){
 
 // Chcek if selected is same color
 const checkSelected = function(){
-    if(selected0.material.color.equals(selected1.material.color) && selected0 != selected1){
-        // Remove the two object
-        scene.remove(selected0.object); scene.remove(selected1);
-        selected0.geometry.dispose();
-        selected0.material.dispose();
-        selected1.geometry.dispose();
-        selected1.material.dispose();
+    if(selected0.color.equals(selected1.color) && selected0.object != selected1.object){
 
-        selected0 = null;
-        selected0 = null;
+        // Remove the two object
+        scene.remove(selected0.object); scene.remove(selected1.object);
+        selected0.object.geometry.dispose();
+        selected0.object.material.dispose();
+        selected1.object.geometry.dispose();
+        selected1.object.material.dispose();
+
+        selected0.object = null; selected0.color = null;
+        selected1.object = null; selected1.color = null;
 
         total_cube -= 2;
         score++;
@@ -87,8 +94,9 @@ const checkSelected = function(){
         // selected0.object.material.color = selected0.color;
         // selected1.object.material.color = selected1.color;
 
-        selected0 = null;
-        selected1 = null;
+        selected0.object = null; selected0.color = null;
+        selected1.object = null; selected1.color = null;
+
         return;
     };
 }
@@ -100,16 +108,19 @@ let onMouseClick = function(e) {
 
     rayCast.setFromCamera(mouse, camera);
     let intersects = rayCast.intersectObjects(scene.children, false);
-    intersects.forEach(obj =>{
+    intersects.forEach(obj => {
         if(! (obj.object.material.color.equals(new THREE.Color('white'))) ){
-            if( selected0 === null ){
-                selected0 = obj.object;
+            if( selected0.color === null ){
+                selected0.color = obj.object.material.color;
+                selected0.object = obj.object;
                 // obj.object.material.color = new THREE.Color('grey');
-                // console.log(selected0.color)
+                console.log('select0 '+selected0.color)
             }
-            else if( selected1 === null ){
-                selected1 = obj.object;
-                // console.log(selected1.color)
+            else if( selected1.color === null ){
+                selected1.color = obj.object.material.color;
+                selected1.object = obj.object;
+                console.log('select1 '+selected1.color)
+                checkSelected();
             }
         }
     });
@@ -137,20 +148,21 @@ spawnPlane();
 
 // MainLoop
 const mainloop = function(){
-    if(spawn_cube == spawn_cd && total_cube <= MAX_CUBE){
-        const color = pickColor();
-        spawnCube(color);
-        total_cube++;
-        if(spawn_cd > 0)
-            spawn_cd -= 5;
-        spawn_cube = 0;
+    if(total_cube < MAX_CUBE){
+        if(spawn_cube == spawn_cd){
+            const color = pickColor();
+            spawnCube(color);
+            total_cube++;
+            if(spawn_cd > 10)
+                spawn_cd -= 2;
+            console.log(total_cube);
+            spawn_cube = 0;
+        }
+        spawn_cube += spawn_rate;
     }
-
-    spawn_cube += spawn_rate;
 
     renderer.render(scene, camera);
     controls.update();
-    checkSelected();
     requestAnimationFrame(mainloop);
 }
 
