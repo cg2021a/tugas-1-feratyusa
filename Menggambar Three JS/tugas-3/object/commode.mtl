@@ -1,0 +1,26 @@
+# Blender MTL File: 'commode.blend'
+# Material Count: 2
+
+newmtl back
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.065852 0.065852 0.065852
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd gloss.jpg
+
+newmtl wood
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd 4K-wood_fine_5-diffuse.jpg
+map_Kd 4K-wood_fine_5-ao.jpg
+norm 4K-wood_fine_5-normal.jpg
